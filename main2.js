@@ -35,13 +35,19 @@ class ProductsList {
 
     }
 
-    addGoods() {
-        document.querySelector(".buy-btn").addEventListener('click', (event) => {
-            let targetId = event.target.id
-            let foundProduct = this.goods.find(func => func.id == targetId)
-            console.log(foundProduct)
-        })
+   addGoods() {
+       let element =  document.querySelectorAll (".buy-btn");
+       for (let button of element){
+        button.addEventListener('click', (event) => {
+        let targetId = event.target.id 
+        let foundProduct = this.goods.find(func => func.id_product == targetId)
+        const block = document.querySelector(this.basketcont);
+        block.insertAdjacentHTML('beforeend', foundProduct.render ());
+    })
+        }
+       
     }
+     
 
 }
 
